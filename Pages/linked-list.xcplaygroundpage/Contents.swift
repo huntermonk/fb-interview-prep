@@ -1,6 +1,6 @@
 //: [Previous](@previous)
 
-//: [Next](@next)
+//: # Linked List
 
 import Foundation
 
@@ -80,4 +80,4 @@ let original = list.description
 list.reverse()
 list.description
 
-
+//: [Next](@next)

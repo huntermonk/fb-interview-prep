@@ -1,10 +1,10 @@
 //: [Previous](@previous)
 
-import Foundation
-
-//: [Next](@next)
+//: ## Binary Search Tree
 
 //: [From](https://github.com/raywenderlich/swift-algorithm-club/tree/master/Binary%20Search%20Tree)
+
+import Foundation
 
 enum Child {
 	case left, right
@@ -80,3 +80,5 @@ class BinarySearchTree<T: Comparable> {
 		}
 	}
 }
+
+//: [Next](@next)

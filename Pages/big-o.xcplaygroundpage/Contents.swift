@@ -1,6 +1,6 @@
-//: [Previous](@previous)
-
 import Foundation
+
+//: ## Big-o notation: Fibonacci
 
 func printUnorderedPairs(array: [Int]) {
 	for index in 0..<array.count {
@@ -12,23 +12,13 @@ func printUnorderedPairs(array: [Int]) {
 
 printUnorderedPairs(array: [1,2,3,4,5,6,7,8,9,10])
 
-func test() {
-	for i in 0..<10 {
-		print(i)
-	}
-}
-
-//test()
-
-//: [Next](@next)
-
 func fib(_ n: Int) -> Int {
 	if n <= 0 { return 0 }
 	if n == 1 { return 1 }
 	return fib(n - 1) + fib(n - 2)
 }
 
-//fib(4)
+fib(4)
 
 func allFib(_ n: Int) {
 	for index in 1..<n {
@@ -36,7 +26,7 @@ func allFib(_ n: Int) {
 	}
 }
 
-//allFib(4)
+allFib(4)
 
 func allFibMemo(_ n: Int) {
 	var memo = [Int : Int]()
@@ -57,3 +47,4 @@ func fib(_ n: Int, memo: inout [Int : Int]) -> Int {
 
 allFibMemo(10)
 
+//: [Next](@next)

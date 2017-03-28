@@ -1,14 +1,8 @@
 //: [Previous](@previous)
 
+//: ## Binary Tree
+
 import Foundation
-
-//: [Next](@next)
-
-/*:
-
-## Binary Tree
-
-*/
 
 indirect enum BinaryTree<T> {
 	case node(BinaryTree<T>, T, BinaryTree<T>)
@@ -82,15 +76,11 @@ extension BinaryTree: CustomDebugStringConvertible {
 	}
 }
 
-var memo = [String]()
-//tree.traverseInOrder(memo: &memo) { node in
-//	print("In order: \(node.1).")
-//}
-
 top.traverseInOrder { node in
 	print("In order: \(node).")
 }
 
+var memo = [String]()
 let inOrder = top.inOrderArray(memo: &memo)
 
 print("\n")
@@ -104,3 +94,5 @@ print("\n")
 top.traversePostOrder { node in
 	print("Post order: \(node).")
 }
+
+//: [Next](@next)

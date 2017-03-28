@@ -1,8 +1,8 @@
 //: [Previous](@previous)
 
-import Foundation
+//: # Hash Table
 
-//: [Next](@next)
+import Foundation
 
 struct HashTable<Key: Hashable, Value> {
 	private typealias Element = (key: Key, value: Value)
@@ -117,7 +117,4 @@ table.overloaded
 
 table.value(forKey: "we")
 
-
-
-
-
+//: [Next](@next)

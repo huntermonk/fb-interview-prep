@@ -9,5 +9,6 @@
         <page name='linked-list'/>
         <page name='fbs-handle-zeros'/>
         <page name='quicksort'/>
+        <page name='single-linked-list'/>
     </pages>
 </playground>

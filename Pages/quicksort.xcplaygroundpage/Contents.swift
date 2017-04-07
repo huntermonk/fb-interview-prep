@@ -20,7 +20,6 @@ var array = [10, 0, 3, 9, 2, 14, 8, 27, 1, 5, 8, -1, 26]
 
 quickSort(array)
 
-
 //: This first example works and is easy to understand, but we filter over the array three times. There has to be a more efficient way to do this.
 
 func partitionLomuto<T: Comparable>(_ array: inout [T], low: Int, high: Int) -> Int {
@@ -38,7 +37,15 @@ func partitionLomuto<T: Comparable>(_ array: inout [T], low: Int, high: Int) -> 
 	return i
 }
 
-partitionLomuto(&array, low: 0, high: array.count - 1)
-array
+func quicksortLomuto<T: Comparable>(_ array: inout [T], low: Int, high: Int) {
+	if low < high {
+		let partition = partitionLomuto(&array, low: low, high: high)
+		print("Partition: \(partition).")
+		quicksortLomuto(&array, low: low, high: partition - 1)
+		quicksortLomuto(&array, low: partition + 1, high: high)
+	}
+}
+
+quicksortLomuto(&array, low: 0, high: array.count - 1)
 
 //: [Next](@next)

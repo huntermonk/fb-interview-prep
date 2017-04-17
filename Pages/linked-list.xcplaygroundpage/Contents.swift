@@ -14,6 +14,55 @@ class Node<T> {
 	}
 }
 
+class SingleLinkedNode<T> {
+	var value: T
+	var next: SingleLinkedNode?
+
+	init(_ value: T) {
+		self.value = value
+	}
+}
+
+class SimpleLinkedList<T> {
+	fileprivate var head: SingleLinkedNode<T>?
+
+	var first: SingleLinkedNode<T>? {
+		return head
+	}
+
+    var last: SingleLinkedNode<T>? {
+        guard var node = head else { return nil }
+        while case let next? = node.next {
+            node = next
+        }
+        return node
+    }
+    
+	func append(_ value: T) {
+		let new = SingleLinkedNode(value)
+		if let last = self.last {
+			last.next = new
+		} else {
+			head = new
+		}
+	}
+    
+    var reversed: SimpleLinkedList {
+        var head: SingleLinkedNode<T>? = nil
+        var node = head
+        var returnList = SimpleLinkedList()
+        while node != nil {
+            let n = SingleLinkedNode(node!.value)
+            returnList.append(node!.value)
+            n.next = head
+            head = n
+            node = node?.next
+        }
+        
+        return returnList
+    }
+}
+
 class LinkedList<T> {
 	fileprivate var head: Node<T>?
 
@@ -51,11 +100,9 @@ class LinkedList<T> {
 
 	func makeSingly() {
 		var node = head
-		print("head \(head?.value).")
 		while let next = node?.next {
 			next.previous = nil
 			node = next
-			print("Node next: \(node?.next?.value).")
 		}
 	}
 
@@ -68,6 +115,20 @@ class LinkedList<T> {
 			head = current
 		}
 		return head
+	}
+}
+
+
+extension SimpleLinkedList: CustomStringConvertible {
+	var description: String {
+		var string = "["
+		var node = head
+		while let casted = node {
+			string += "\(casted.value)"
+			node = casted.next
+			if node != nil { string += ", " }
+		}
+		return string + "]"
 	}
 }
 
@@ -84,7 +145,7 @@ extension LinkedList: CustomStringConvertible {
 	}
 }
 
-let list = LinkedList<Int>()
+let list = SimpleLinkedList<Int>()
 
 list.append(13)
 list.append(19)
@@ -94,13 +155,21 @@ list.append(3)
 //list.append(8)
 //list.append(1)
 
-//let original = list.description
-//list.reverse()
-//list.description
+list.reversed
+//list.makeSingly()
+list
 
-list
-list.makeSingly()
-list
+func reverse(root: inout Node<Int>?) -> Node<Int>? {
+    var head: Node<Int>? = nil
+    while root != nil {
+        let n = Node(root!.value)
+        n.next = head
+        head = n
+        root = root?.next
+    }
+    return head
+}
+
 
 //: # Singly Linked List
 

@@ -4,8 +4,8 @@
 
 import Foundation
 
-indirect enum BinaryTree<T> {
-	case node(BinaryTree<T>, T, BinaryTree<T>)
+indirect enum BinaryTreeNode<T> {
+	case node(BinaryTreeNode<T>, T, BinaryTreeNode<T>)
 	case empty
 
 	var count: Int {
@@ -56,16 +56,16 @@ indirect enum BinaryTree<T> {
 	}
 }
 
-let y = BinaryTree.node(.empty, "y", .empty)
-let n = BinaryTree.node(y, "n", .empty)
-let a = BinaryTree.node(n, "a", .empty)
+let y = BinaryTreeNode.node(.empty, "y", .empty)
+let n = BinaryTreeNode.node(y, "n", .empty)
+let a = BinaryTreeNode.node(n, "a", .empty)
 
-let m = BinaryTree.node(.empty, "m", .empty)
-let o = BinaryTree.node(m, "o", .empty)
+let m = BinaryTreeNode.node(.empty, "m", .empty)
+let o = BinaryTreeNode.node(m, "o", .empty)
 
-let top = BinaryTree.node(a, "m", o)
+let top = BinaryTreeNode.node(a, "m", o)
 
-extension BinaryTree: CustomDebugStringConvertible {
+extension BinaryTreeNode: CustomDebugStringConvertible {
 	var debugDescription: String {
 		switch self {
 		case let .node(left, value, right):
